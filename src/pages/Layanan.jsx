@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import AnnouncementBar from "../components/AnnouncementBar";
 import Footer from "../components/Footer";
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
+import { SkeletonCard } from "../components/ui/Skeleton";
 
 const Layanan = () => {
   const [services, setServices] = useState([]);
@@ -36,9 +37,10 @@ const Layanan = () => {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {loading ? (
-            <div className="text-center py-12">
-              <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-green-600 border-r-transparent"></div>
-              <p className="mt-4 text-gray-500">Memuat layanan...</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                <SkeletonCard key={i} />
+              ))}
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -64,10 +66,10 @@ const Layanan = () => {
                         {srv.duration}
                       </span>
                     </div>
-                    <p className="mt-3 text-gray-500 leading-relaxed text-sm flex-grow">
+                    <p className="mt-3 text-gray-500 leading-relaxed text-sm flex-grow line-clamp-3">
                       {srv.desc}
                     </p>
-                    <ul className="mt-4 space-y-1.5">
+                    <ul className="mt-4 space-y-1.5 flex-grow">
                       {srv.benefits.map((b, i) => (
                         <li key={i} className="flex items-start text-sm text-gray-600">
                           <svg className="w-4 h-4 text-green-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
@@ -85,9 +87,12 @@ const Layanan = () => {
                         )}`}
                         target="_blank"
                         rel="noreferrer"
-                        className="px-4 py-2 rounded-lg bg-green-600 text-white font-bold text-sm hover:bg-green-700 transition-all whitespace-nowrap"
+                        className="px-4 py-2 rounded-lg bg-green-600 text-white font-bold text-sm hover:bg-green-700 transition-all transform hover:scale-[1.02] duration-200 flex items-center gap-1.5 group/btn"
                       >
-                        Booking
+                        <span>Booking</span>
+                        <svg className="w-3.5 h-3.5 transform group-hover/btn:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
                       </a>
                     </div>
                   </div>

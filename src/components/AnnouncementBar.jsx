@@ -24,7 +24,7 @@ const AnnouncementBar = () => {
 
   return (
     <div
-      className="bg-green-600 text-white py-2 overflow-hidden whitespace-nowrap"
+      className="bg-green-600 text-white py-2 overflow-hidden whitespace-nowrap sticky top-[64px] z-40 border-t border-green-500/30"
       aria-label="Informasi terkini"
     >
       <div className="animate-marquee">

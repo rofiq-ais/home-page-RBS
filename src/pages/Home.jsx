@@ -5,6 +5,9 @@ import TrustSignals from "../components/TrustSignals";
 import ServicePricing from "../components/ServicePricing";
 import HerbalSection from "../components/HerbalSection";
 import NewsSection from "../components/NewsSection";
+import Testimonials from "../components/Testimonials";
+import FAQ from "../components/FAQ";
+import ContactSection from "../components/ContactSection";
 import CTA from "../components/CTA";
 import Footer from "../components/Footer";
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
@@ -19,6 +22,9 @@ const Home = () => {
         <TrustSignals />
         <ServicePricing />
         <HerbalSection />
+        <Testimonials />
+        <FAQ />
+        <ContactSection />
         <NewsSection />
       </main>
       <CTA />
