@@ -7,6 +7,7 @@ import Herbal from "./pages/Herbal";
 import NotFound from "./pages/NotFound";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ScrollToHash from "./components/ScrollToHash";
+import WhatsAppModal from "./components/WhatsAppModal";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/herbal" element={<Herbal />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <WhatsAppModal />
       </BrowserRouter>
     </ErrorBoundary>
   );

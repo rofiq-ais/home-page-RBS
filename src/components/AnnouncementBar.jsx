@@ -10,7 +10,9 @@ const AnnouncementBar = () => {
       .catch(console.error);
   }, []);
 
-  if (announcements.length === 0) return null;
+  // Hiding the running text temporarily per user request
+  return null;
+
 
   const renderGroup = (prefix) =>
     announcements.map((item, idx) => (
