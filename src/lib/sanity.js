@@ -1,9 +1,14 @@
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
+import sanityFallback from "../data/sanityFallback.json";
+import { articles as localArticles } from "../data/articles";
+
+const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || "51gxevin";
+const dataset = import.meta.env.VITE_SANITY_DATASET || "production";
 
 const client = createClient({
-  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
-  dataset: import.meta.env.VITE_SANITY_DATASET,
+  projectId,
+  dataset,
   apiVersion: "2025-01-20",
   useCdn: true,
 });
@@ -11,8 +16,33 @@ const client = createClient({
 const builder = imageUrlBuilder(client);
 
 export function urlFor(source) {
-  return builder.image(source);
+  if (!source) {
+    const dummy = {
+      width: () => dummy,
+      height: () => dummy,
+      url: () => "/placeholder.jpg",
+    };
+    return dummy;
+  }
+  try {
+    return builder.image(source);
+  } catch (err) {
+    const dummy = {
+      width: () => dummy,
+      height: () => dummy,
+      url: () => "/placeholder.jpg",
+    };
+    return dummy;
+  }
 }
+
+const fallbackServices = sanityFallback.filter((item) => item._type === "service");
+const fallbackProducts = sanityFallback.filter((item) => item._type === "product");
+const fallbackArticles = localArticles.map((a, i) => ({
+  ...a,
+  _id: `fallback-art-${i}`,
+  slug: typeof a.slug === "string" ? { current: a.slug } : a.slug,
+}));
 
 export async function fetchArticles() {
   const query = `*[_type == "article"] | order(publishedAt desc) {
@@ -24,7 +54,14 @@ export async function fetchArticles() {
     date,
     publishedAt
   }`;
-  return client.fetch(query);
+  try {
+    const res = await client.fetch(query);
+    if (res && res.length > 0) return res;
+    return fallbackArticles;
+  } catch (err) {
+    console.warn("Gagal memuat artikel dari Sanity (CORS/jaringan), menggunakan fallback:", err);
+    return fallbackArticles;
+  }
 }
 
 export async function fetchArticleBySlug(slug) {
@@ -38,7 +75,20 @@ export async function fetchArticleBySlug(slug) {
     date,
     publishedAt
   }`;
-  return client.fetch(query, { slug });
+  try {
+    const res = await client.fetch(query, { slug });
+    if (res) return res;
+    const match = fallbackArticles.find(
+      (a) => (a.slug?.current || a.slug) === slug
+    );
+    return match || null;
+  } catch (err) {
+    console.warn("Gagal memuat detail artikel dari Sanity:", err);
+    const match = fallbackArticles.find(
+      (a) => (a.slug?.current || a.slug) === slug
+    );
+    return match || null;
+  }
 }
 
 export async function fetchServices() {
@@ -54,7 +104,14 @@ export async function fetchServices() {
     image,
     alt
   }`;
-  return client.fetch(query);
+  try {
+    const res = await client.fetch(query);
+    if (res && res.length > 0) return res;
+    return fallbackServices;
+  } catch (err) {
+    console.warn("Gagal memuat layanan dari Sanity (CORS/jaringan), menggunakan fallback:", err);
+    return fallbackServices;
+  }
 }
 
 export async function fetchServiceBySlug(slug) {
@@ -70,7 +127,14 @@ export async function fetchServiceBySlug(slug) {
     image,
     alt
   }`;
-  return client.fetch(query, { slug });
+  try {
+    const res = await client.fetch(query, { slug });
+    if (res) return res;
+    return fallbackServices.find((s) => (s.slug?.current || s.slug) === slug) || null;
+  } catch (err) {
+    console.warn("Gagal memuat detail layanan dari Sanity:", err);
+    return fallbackServices.find((s) => (s.slug?.current || s.slug) === slug) || null;
+  }
 }
 
 export async function fetchProducts() {
@@ -86,7 +150,14 @@ export async function fetchProducts() {
     image,
     alt
   }`;
-  return client.fetch(query);
+  try {
+    const res = await client.fetch(query);
+    if (res && res.length > 0) return res;
+    return fallbackProducts;
+  } catch (err) {
+    console.warn("Gagal memuat produk dari Sanity (CORS/jaringan), menggunakan fallback:", err);
+    return fallbackProducts;
+  }
 }
 
 export async function fetchProductBySlug(slug) {
@@ -102,7 +173,14 @@ export async function fetchProductBySlug(slug) {
     image,
     alt
   }`;
-  return client.fetch(query, { slug });
+  try {
+    const res = await client.fetch(query, { slug });
+    if (res) return res;
+    return fallbackProducts.find((p) => (p.slug?.current || p.slug) === slug) || null;
+  } catch (err) {
+    console.warn("Gagal memuat detail produk dari Sanity:", err);
+    return fallbackProducts.find((p) => (p.slug?.current || p.slug) === slug) || null;
+  }
 }
 
 export async function fetchAnnouncements() {
@@ -110,5 +188,11 @@ export async function fetchAnnouncements() {
     _id,
     text
   }`;
-  return client.fetch(query);
+  try {
+    const res = await client.fetch(query);
+    return res || [];
+  } catch (err) {
+    console.warn("Gagal memuat pengumuman dari Sanity:", err);
+    return [];
+  }
 }

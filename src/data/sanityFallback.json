@@ -1,0 +1,228 @@
+[
+  {
+    "_createdAt": "2026-09-22T15:00:07Z",
+    "_id": "084edaf4-4dda-4ef0-b00a-73ba55029f9f",
+    "_rev": "JE81EW3vZ1Xfs6frC2QHYH",
+    "_type": "service",
+    "_updatedAt": "2026-09-22T15:03:24Z",
+    "alt": "ear candle",
+    "benefits": [
+      "Memberikan Relaksasi Mendalam: Sensasi hangat dan suara gemercik halus dari pembakaran lilin membantu menenangkan sistem saraf dan meredakan stres.",
+      "Meredakan Ketegangan Otot Wajah: Kehangatan yang dihasilkan membantu mengendurkan otot-otot yang kaku di sekitar rahang, pelipis, dan leher.",
+      "Mengurangi Pusing dan Sakit Kepala Ringan: Membantu melancarkan sirkulasi darah di area kepala, sehingga efektif meredakan pusing akibat kelelahan atau kurang tidur.",
+      "Meningkatkan Kualitas Tidur: Efek relaksasi total setelah terapi ini sangat membantu penderita insomnia untuk tidur lebih nyenyak.",
+      "Menciptakan Sensasi Plong dan Nyaman: Memberikan perasaan segar dan lega di sekitar area telinga dan kepala setelah beraktivitas padat."
+    ],
+    "desc": "Terapi kehangatan telinga dengan lilin khusus untuk memberikan efek relaksasi mendalam, meredakan ketegangan kepala, dan memberikan kenyamanan pada area THT.",
+    "duration": "\u00b130 menit",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-8f8e2fb0400a06f982db83ada0e6259206515c7e-393x280-webp",
+        "_type": "reference"
+      }
+    },
+    "name": "Ear Candle",
+    "order": 1,
+    "price": "Rp 50.000",
+    "shortDesc": "Terapi kehangatan telinga dengan lilin khusus",
+    "slug": {
+      "_type": "slug",
+      "current": "ear-candle"
+    }
+  },
+  {
+    "_createdAt": "2026-09-22T14:53:03Z",
+    "_id": "40d2a995-2d9b-47e7-a866-766ffa02902a",
+    "_rev": "JE81EW3vZ1Xfs6frC2NyEs",
+    "_type": "service",
+    "_updatedAt": "2026-09-22T14:55:59Z",
+    "alt": "totok punggung",
+    "benefits": [
+      "Melancarkan peredaran darah: Mengurai sumbatan di jalur saraf agar aliran darah dan oksigen ke seluruh tubuh kembali optimal.",
+      "Meredakan nyeri dan pegal: Mengatasi kaku otot, nyeri pinggang, serta pegal-linu kronis akibat aktivitas harian atau posisi duduk yang lama.",
+      "Memperbaiki fungsi organ tubuh: Menstimulasi titik-titik refleksi di punggung yang terhubung langsung dengan organ vital seperti lambung, ginjal, dan hati.",
+      "Memberikan relaksasi mendalam: Membantu menurunkan tingkat stres, mengurangi ketegangan mental, dan membuat tubuh terasa lebih ringan.",
+      "Meningkatkan daya tahan tubuh: Membantu memperbaiki sistem metabolisme agar tubuh lebih bugar dan tidak mudah lelah."
+    ],
+    "desc": "Terapi tekan dan getar pada titik saraf punggung untuk melancarkan sirkulasi darah, meredakan nyeri otot, dan mengembalikan kesegaran tubuh secara alami.",
+    "duration": "\u00b145 menit",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-8f8e2fb0400a06f982db83ada0e6259206515c7e-393x280-webp",
+        "_type": "reference"
+      }
+    },
+    "name": "Totok Punggung",
+    "order": 1,
+    "price": "Rp 150.000",
+    "shortDesc": "Terapi tekan dan getar pada titik saraf punggung",
+    "slug": {
+      "_type": "slug",
+      "current": "totok-punggung"
+    }
+  },
+  {
+    "_createdAt": "2026-09-22T15:03:43Z",
+    "_id": "a496a226-a808-4459-a052-a5561337782e",
+    "_rev": "JE81EW3vZ1Xfs6frC2QXqF",
+    "_type": "service",
+    "_updatedAt": "2026-09-22T15:06:22Z",
+    "alt": "General Check Up QRMA",
+    "benefits": [
+      "Skrining Kesehatan Menyeluruh: Mampu mendeteksi gambaran awal puluhan fungsi organ tubuh sekaligus, mulai dari jantung, lambung, hati, ginjal, hingga sistem reproduksi dalam satu kali pemeriksaan.",
+      "Deteksi Dini Kebutuhan Nutrisi: Membantu mengidentifikasi tingkat kecukupan zat gizi di dalam tubuh, seperti kadar vitamin, mineral, kalsium, koenzim, dan asam amino.",
+      "Metode Non-Invasif (Tanpa Rasa Sakit): Sangat nyaman dan aman bagi pasien yang takut jarum, karena pemeriksaan sama sekali tidak memerlukan pengambilan sampel darah atau urine.",
+      "Proses Instan dan Cepat: Pemeriksaan hanya memakan waktu sekitar 1 menit dan hasilnya berupa laporan digital bisa langsung keluar serta dibaca hari itu juga.",
+      "Panduan Gaya Hidup Preventif: Hasil pemetaan alat ini mempermudah terapis atau pasien dalam menentukan tindakan pencegahan, seperti mengatur pola makan, memilih suplemen yang tepat, dan menjaga kebugaran."
+    ],
+    "desc": "Cukup genggam sensor selama 60 detik untuk mendeteksi dini kondisi organ, vitamin, dan metabolisme tubuh secara praktis.",
+    "duration": "\u00b110 menit",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-8f8e2fb0400a06f982db83ada0e6259206515c7e-393x280-webp",
+        "_type": "reference"
+      }
+    },
+    "name": "General Check Up QRMA",
+    "order": 1,
+    "price": "Rp 50.000",
+    "shortDesc": "Metode pemindaian kesehatan tubuh menyeluruh tanpa jarum.",
+    "slug": {
+      "_type": "slug",
+      "current": "general-check-up-qrma"
+    }
+  },
+  {
+    "_createdAt": "2026-07-25T16:49:00Z",
+    "_id": "c8fcc025-fa9f-4122-a8b2-04b76095e028",
+    "_rev": "C90lXvqhCRFE4tCBdpJe2Y",
+    "_type": "product",
+    "_updatedAt": "2026-07-25T16:50:20Z",
+    "alt": "gambar madu mint",
+    "benefits": [
+      "Melegakan pernafasan"
+    ],
+    "desc": "aerf aef asldfj lksaejaf afe  ",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-8097d05fad60584dee619a421ef89604036d3ece-735x551-jpg",
+        "_type": "reference"
+      }
+    },
+    "name": "Madu Mint",
+    "order": 1,
+    "price": "Rp 75.000",
+    "shortDesc": "akejfjwer",
+    "size": "250 ml",
+    "slug": {
+      "_type": "slug",
+      "current": "madu-mint"
+    }
+  },
+  {
+    "_createdAt": "2026-07-24T15:00:06Z",
+    "_id": "d518c532-8e12-4e97-b8e1-ee427059affc",
+    "_rev": "9vejxFYQLIZx6l9mQtrHVc",
+    "_system": {
+      "base": {
+        "id": "d518c532-8e12-4e97-b8e1-ee427059affc",
+        "rev": "o8ZgqbMRbV0oYTcJtdSc87"
+      }
+    },
+    "_type": "service",
+    "_updatedAt": "2026-09-22T14:52:24Z",
+    "alt": "bekam basah",
+    "benefits": [
+      "Benteng dan Perlindungan Diri dari: gangguan sihir, penyakit ain (pandangan mata perusak), serta tipu daya jin dan setan.",
+      "Menyembuhkan Gangguan Gaib dan Pengaruh Sihir",
+      "Membersihkan Penyakit Hati",
+      "Meredakan Stres & Kecemasan",
+      "Terapi Pendamping Medis"
+    ],
+    "desc": "Ruqyah syariyyah adalah metode terapi penyembuhan spiritual dalam Islam yang dilakukan dengan cara membacakan ayat-ayat suci Al-Qur'an dan doa-doa perlindungan yang sahih sesuai dengan tuntunan Nabi Muhammad SAW",
+    "duration": "\u00b145 menit",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-dc86d07556539fbc108e74c9227b2561f169dd13-736x414-jpg",
+        "_type": "reference"
+      }
+    },
+    "name": "Ruqyah Syari'ah",
+    "order": 1,
+    "price": "Rp 200.000",
+    "shortDesc": "Terapi penyembuhan spiritual alami menggunakan lantunan ayat Al-Qur'an dan doa sahih",
+    "slug": {
+      "_type": "slug",
+      "current": "ruqyah-syari-ah"
+    }
+  },
+  {
+    "_createdAt": "2026-09-22T14:56:10Z",
+    "_id": "d5920264-10f5-42c6-8103-063003f25b0c",
+    "_rev": "u3MMk9EkwEQM5L686BDyMY",
+    "_type": "service",
+    "_updatedAt": "2026-09-22T14:59:04Z",
+    "alt": "gurah hidung",
+    "benefits": [
+      "Membersihkan saluran pernapasan: Mengeluarkan lendir kotor, dahak, debu, dan bakteri yang mengendap di rongga hidung dan tenggorokan.",
+      "Melegakan hidung tersumbat: Mengatasi gejala sinusitis, polip, asma, rinitis alergi, dan sesak napas akibat penumpukan lendir.",
+      "Menjernihkan kualitas suara: Membersihkan lendir yang menyumbat pita suara sehingga suara terdengar lebih nyaring, bersih, dan merdu.",
+      "Meredakan sakit kepala dan migrain: Mengurangi tekanan pada rongga sinus yang sering kali menjadi pemicu pusing kronis dan ketegangan di area wajah.",
+      "Menghilangkan bau mulut tidak sedap: Membantu membuang sumber bakteri di area nasofaring yang memicu aroma napas kurang segar."
+    ],
+    "desc": "Terapi pembersihan saluran pernapasan dengan ramuan herbal alami. Efektif mengeluarkan lendir kotor, melancarkan napas, dan menjernihkan suara.",
+    "duration": "\u00b190 menit",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-8f8e2fb0400a06f982db83ada0e6259206515c7e-393x280-webp",
+        "_type": "reference"
+      }
+    },
+    "name": "Gurah Hidung",
+    "order": 1,
+    "price": "Rp 200.000",
+    "shortDesc": "Terapi pembersihan saluran pernapasan dengan ramuan herbal alami.",
+    "slug": {
+      "_type": "slug",
+      "current": "gurah-hidung"
+    }
+  },
+  {
+    "_createdAt": "2026-09-22T14:39:16Z",
+    "_id": "d7f3b6af-f89b-43c5-bb78-3b050485bdec",
+    "_rev": "shrU6Mf5e95xpFmFSQgQ8p",
+    "_type": "service",
+    "_updatedAt": "2026-09-22T14:50:23Z",
+    "alt": "Bekam / Hijamah",
+    "benefits": [
+      "Detoksifikasi Tubuh: Mengeluarkan darah statis yang mengandung racun, zat sisa metabolisme, dan radikal bebas yang menyumbat pembuluh darah kapiler.",
+      "Melancarkan Sirkulasi Darah: Mengurangi penyumbatan pada pembuluh darah sehingga aliran oksigen dan nutrisi ke seluruh organ tubuh menjadi lebih lancar.",
+      "Meredakan Nyeri dan Pegal: Efektif mengatasi migrain, sakit kepala, nyeri otot, sakit pinggang, serta kaku pada leher dan pundak.",
+      "Menurunkan Kolesterol & Darah Tinggi: Membantu membuang kelebihan lemak darah (kolesterol) dan meredakan ketegangan dinding pembuluh darah penyebab hipertensi.",
+      "Meningkatkan Imunitas Tubuh: Proses penyedotan memicu respons peradangan lokal yang merangsang terbentuknya sel darah putih dan antibodi baru untuk melawan penyakit."
+    ],
+    "desc": "Metode pengobatan syar'i melalui terapi detoksifikasi darah kotor. Efektif melancarkan sirkulasi, membuang racun, dan mengembalikan kebugaran tubuh sesuai tuntunan Rasulullah SAW.",
+    "duration": "\u00b145 menit",
+    "image": {
+      "_type": "image",
+      "asset": {
+        "_ref": "image-8f8e2fb0400a06f982db83ada0e6259206515c7e-393x280-webp",
+        "_type": "reference"
+      }
+    },
+    "name": "Bekam / Hijamah",
+    "order": 1,
+    "price": "Rp 150.000",
+    "shortDesc": "Metode pengobatan syar'i melalui terapi detoksifikasi darah kotor",
+    "slug": {
+      "_type": "slug",
+      "current": "bekam-hijamah"
+    }
+  }
+]

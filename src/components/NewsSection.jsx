@@ -38,7 +38,7 @@ const NewsSection = () => {
                 <span className="text-xs uppercase tracking-wider text-green-600 font-bold bg-green-50 px-3 py-1 rounded-full">{art.category}</span>
                 <h3 className="text-2xl font-bold text-gray-900 mt-4 group-hover:text-green-600 transition-colors">{art.title}</h3>
                 <p className="text-sm text-gray-400 mt-2">{art.date}</p>
-                <Link to={`/artikel/${art.slug.current}`} className="text-green-600 font-bold mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform duration-300">
+                <Link to={`/artikel/${art.slug?.current || art.slug}`} className="text-green-600 font-bold mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform duration-300">
                   Baca selengkapnya <span className="ml-2">&rarr;</span>
                 </Link>
               </div>

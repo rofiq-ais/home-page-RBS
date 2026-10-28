@@ -65,7 +65,7 @@ const Artikel = () => {
                   </h2>
                   <p className="text-sm text-gray-400 mt-2">{art.date}</p>
                   <p className="text-gray-600 mt-4 leading-relaxed">{art.excerpt}</p>
-                  <Link to={`/artikel/${art.slug.current}`} className="text-green-600 font-bold mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform duration-300">
+                  <Link to={`/artikel/${art.slug?.current || art.slug}`} className="text-green-600 font-bold mt-6 inline-flex items-center group-hover:translate-x-2 transition-transform duration-300">
                     Baca selengkapnya <span className="ml-2">&rarr;</span>
                   </Link>
                 </article>
