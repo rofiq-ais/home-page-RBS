@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import { WHATSAPP_LINK } from "../config";
 import { fetchServices, urlFor } from "../lib/sanity";
 import Navbar from "../components/Navbar";
@@ -15,7 +16,37 @@ const Layanan = () => {
   const [loading, setLoading] = useState(true);
   const [zoomedImage, setZoomedImage] = useState(null);
   const [expandedBenefits, setExpandedBenefits] = useState({});
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const kategoriParam = searchParams.get("kategori") || searchParams.get("category");
+
+  const [activeCategory, setActiveCategory] = useState(() => {
+    if (kategoriParam === "homecare" || kategoriParam === "kunjungan") return "homecare";
+    if (kategoriParam === "klinik") return "klinik";
+    return "all";
+  });
+
+  // Sync state if URL query param changes
+  useEffect(() => {
+    if (kategoriParam === "homecare" || kategoriParam === "kunjungan") {
+      setActiveCategory("homecare");
+    } else if (kategoriParam === "klinik") {
+      setActiveCategory("klinik");
+    } else if (kategoriParam === "all") {
+      setActiveCategory("all");
+    }
+  }, [kategoriParam]);
+
+  const handleCategoryChange = (category) => {
+    setActiveCategory(category);
+    if (category === "all") {
+      searchParams.delete("kategori");
+      searchParams.delete("category");
+      setSearchParams(searchParams, { replace: true });
+    } else {
+      setSearchParams({ kategori: category }, { replace: true });
+    }
+  };
 
   const toggleBenefits = (id) => {
     setExpandedBenefits((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -59,13 +90,13 @@ const Layanan = () => {
         </div>
       </section>
 
-      <section className="py-16 bg-gray-50">
+      <section id="daftar-layanan" className="py-16 bg-gray-50 scroll-mt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Category Filter Tabs */}
           <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10">
             <button
               type="button"
-              onClick={() => setActiveCategory("all")}
+              onClick={() => handleCategoryChange("all")}
               className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeCategory === "all"
                   ? "bg-green-600 text-white shadow-md shadow-green-600/20"
@@ -76,7 +107,7 @@ const Layanan = () => {
             </button>
             <button
               type="button"
-              onClick={() => setActiveCategory("klinik")}
+              onClick={() => handleCategoryChange("klinik")}
               className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 activeCategory === "klinik"
                   ? "bg-green-600 text-white shadow-md shadow-green-600/20"
@@ -87,7 +118,7 @@ const Layanan = () => {
             </button>
             <button
               type="button"
-              onClick={() => setActiveCategory("homecare")}
+              onClick={() => handleCategoryChange("homecare")}
               className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
                 activeCategory === "homecare"
                   ? "bg-emerald-700 text-white shadow-md shadow-emerald-700/20"

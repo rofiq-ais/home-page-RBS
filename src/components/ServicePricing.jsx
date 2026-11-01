@@ -149,7 +149,7 @@ const ServicePricing = () => {
             </div>
           </div>
           <Link
-            to="/layanan"
+            to="/layanan?kategori=homecare#daftar-layanan"
             className="px-6 py-2.5 rounded-full bg-amber-400 hover:bg-amber-300 text-gray-950 font-black text-xs sm:text-sm transition-all shadow-md shrink-0 whitespace-nowrap transform hover:scale-[1.02]"
           >
             Lihat Layanan Kunjungan &rarr;
