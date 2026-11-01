@@ -1,7 +1,7 @@
 import { WHATSAPP_LINK } from "../config";
 
 const Hero = () => (
-  <section id="home" className="relative overflow-hidden bg-gradient-to-br from-green-50 via-white to-emerald-50 py-20 lg:py-28">
+  <section id="home" className="relative overflow-hidden bg-gradient-to-br from-green-50 via-white to-emerald-50 pt-4 pb-12 sm:pt-6 sm:pb-14 lg:pt-8 lg:pb-16">
     {/* Decorative background elements */}
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
       <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-gradient-to-br from-green-200/40 to-emerald-100/30 rounded-full blur-3xl"></div>
@@ -18,7 +18,7 @@ const Hero = () => (
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         {/* Left column - Text */}
         <div className="text-center lg:text-left">
-          <div className="inline-flex items-center gap-2 bg-green-100/80 backdrop-blur-sm text-green-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
+          <div className="inline-flex items-center gap-2 bg-green-100/80 backdrop-blur-sm text-green-700 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold mb-4">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
             Klinik Syariah Ruqyah Bekam Sehat
           </div>
@@ -28,55 +28,107 @@ const Hero = () => (
               Meraih Mardhotillah
             </span>
           </h1>
-          <p className="mt-6 max-w-xl mx-auto lg:mx-0 text-lg text-gray-500 sm:text-xl leading-relaxed">
-            Pengobatan {" "}
-            <span className="font-semibold text-green-700">sunnah Nabi,</span>{" "}
-            Profesional, Berkualitas, Berstandar PBI, Aman, Nyaman tanpa rasa sakit. Insya Allah membantu mengatasi berbagai keluhan penyakit, baik jasmani maupun rohani. Melayani dengan sepenuh hati. Teruji sejak 2003.
+          <p className="mt-5 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-gray-600 leading-relaxed">
+            Ikhtiar pemulihan jasmani dan rohani sesuai tuntunan{" "}
+            <span className="font-bold text-green-700">sunnah Nabi ﷺ</span>.
+            Terapi nyaman, higienis dengan alat steril sekali pakai, bebas rasa sakit, dan dibimbing langsung oleh terapis bersertifikat PBI. Amanah melayani keluarga sejak 2003 di Jakarta Utara.
           </p>
 
-          {/* CTA Buttons */}
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-            <a
-              href={WHATSAPP_LINK}
-              target="_blank"
-              rel="noreferrer"
-              className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-bold rounded-full text-white bg-green-600 hover:bg-green-700 transition-all shadow-lg shadow-green-600/25 hover:shadow-green-600/40 hover:-translate-y-0.5"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16" className="transition-transform group-hover:scale-110">
-                <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
-              </svg>
-              Konsultasi via WhatsApp
-            </a>
-            <a
-              href="#services"
-              className="inline-flex items-center justify-center gap-2 px-8 py-4 text-base font-bold rounded-full border-2 border-green-600 text-green-700 hover:bg-green-600 hover:text-white transition-all"
-            >
-              Lihat Layanan
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </a>
+          {/* Quick Symptom Pills */}
+          <div className="mt-6 flex flex-wrap gap-2 items-center justify-center lg:justify-start">
+            <span className="text-xs font-bold text-gray-500 uppercase tracking-wider">Solusi Untuk:</span>
+            {[
+              "Pundak Kaku & Pegal",
+              "Migrain & Darah Tinggi",
+              "Sinusitis & Nafas Berat",
+              "Gelisah / Susah Tidur",
+              "Detoks Darah Kotor",
+            ].map((tag) => (
+              <a
+                key={tag}
+                href="#peta-keluhan"
+                className="text-xs font-semibold px-3 py-1 rounded-full bg-white/90 text-green-800 border border-green-200/90 shadow-2xs hover:bg-green-600 hover:text-white hover:border-green-600 transition-all inline-flex items-center gap-1"
+              >
+                <span>&bull;</span> {tag}
+              </a>
+            ))}
           </div>
 
+          {/* CTA Buttons */}
+          <div className="mt-7">
+            <div className="flex flex-col sm:flex-row gap-3.5 sm:gap-4 justify-center lg:justify-start items-stretch sm:items-center">
+              <a
+                href={`${WHATSAPP_LINK}?text=${encodeURIComponent("Halo Admin RBS, saya ingin konsultasi mengenai keluhan kesehatan saya.")}`}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative inline-flex items-center justify-center gap-2.5 px-6 sm:px-8 h-12 sm:h-14 text-sm sm:text-base font-bold rounded-full text-white bg-green-600 hover:bg-green-700 transition-all shadow-lg shadow-green-600/25 hover:shadow-green-600/40 hover:-translate-y-0.5 text-center shrink-0 border-2 border-transparent box-border leading-none"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16" className="transition-transform group-hover:scale-110 shrink-0">
+                  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
+                </svg>
+                <span>Konsultasi Keluhan (Gratis)</span>
+              </a>
+
+              <a
+                href="#promo-bundle"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 h-12 sm:h-14 text-sm sm:text-base font-bold rounded-full border-2 border-green-600 text-green-700 bg-white hover:bg-green-600 hover:text-white transition-all shadow-xs text-center shrink-0 box-border leading-none"
+              >
+                <span>Lihat Paket Promo</span>
+                <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+            </div>
+
+            <p className="text-[11px] text-gray-500 mt-2.5 font-medium text-center lg:text-left">
+              💬 Tanya-tanya dulu tanpa canggung &bull; Respon cepat & dibimbing langsung terapis
+            </p>
+          </div>
+
+
           {/* Trust badges */}
-          <div className="mt-10 flex flex-wrap gap-6 justify-center lg:justify-start text-sm text-gray-500">
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+          <div className="mt-8 flex flex-wrap gap-4 sm:gap-6 justify-center lg:justify-start text-xs sm:text-sm text-gray-600 font-medium">
+            <div className="flex items-center gap-1.5 bg-white/70 backdrop-blur-xs px-3 py-1.5 rounded-full border border-green-100 shadow-2xs">
+              <svg className="w-4 h-4 text-green-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
               Legalitas Dinkes
             </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <div className="flex items-center gap-1.5 bg-white/70 backdrop-blur-xs px-3 py-1.5 rounded-full border border-green-100 shadow-2xs">
+              <svg className="w-4 h-4 text-green-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
-              Terapis Bersertifikat
+              Terapis Bersertifikat PBI
             </div>
-            <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <div className="flex items-center gap-1.5 bg-white/70 backdrop-blur-xs px-3 py-1.5 rounded-full border border-green-100 shadow-2xs">
+              <svg className="w-4 h-4 text-green-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
-              Alat Steril & Higienis
+              Alat Steril Disposable
+            </div>
+          </div>
+
+          {/* Mobile Service Preview Grid (visible only on mobile & tablet) */}
+          <div className="mt-8 lg:hidden bg-white/90 backdrop-blur-md rounded-2xl p-4 border border-green-100 shadow-sm">
+            <div className="text-center mb-3">
+              <span className="text-[11px] font-bold text-green-800 uppercase tracking-wider">
+                Layanan Sunnah Unggulan RBS
+              </span>
+            </div>
+            <div className="grid grid-cols-3 gap-2 text-center">
+              {[
+                { icon: "🤲", label: "Ruqyah" },
+                { icon: "⭕", label: "Bekam" },
+                { icon: "🌿", label: "Gurah" },
+                { icon: "💆", label: "Totok" },
+                { icon: "🍯", label: "Herbal" },
+                { icon: "📋", label: "Check Up" },
+              ].map((item) => (
+                <div key={item.label} className="p-2 rounded-xl bg-green-50/70 border border-green-100/60">
+                  <span className="text-xl block">{item.icon}</span>
+                  <span className="text-[11px] font-semibold text-gray-700">{item.label}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

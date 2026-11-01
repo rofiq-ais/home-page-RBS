@@ -68,6 +68,12 @@ export default {
       validation: (Rule) => Rule.required(),
     },
     {
+      name: 'badge',
+      title: 'Badge / Label Khusus (Opsional)',
+      type: 'string',
+      description: 'Contoh: Paket Hemat, Promo Bundling, Terpopuler',
+    },
+    {
       name: 'order',
       title: 'Urutan',
       type: 'number',

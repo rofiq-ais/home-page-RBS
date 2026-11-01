@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import imgSertifikat1 from '../assets/sertifikat 1.jpeg';
 import imgSertifikat2 from '../assets/sertifikat 2.jpeg';
 import imgRuangIkhwan from '../assets/ruang ikhwan.jpeg';
@@ -10,17 +10,38 @@ const TrustSignals = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [zoomedImage, setZoomedImage] = useState(null);
 
+  useEffect(() => {
+    if (!selectedItem && !zoomedImage) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        if (zoomedImage) setZoomedImage(null);
+        else setSelectedItem(null);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [selectedItem, zoomedImage]);
+
   const signals = [
     { 
       title: "Legalitas Dinkes", 
-      desc: "STPT: 001/B.41/31.72.03.1003/-1.779.3/2018", 
+      desc: "STPT Resmi: 001/B.41/31.72.03.1003/-1.779.3/2018", 
       icon: "⚖️",
+      type: "legal",
       images: []
     },
     { 
       title: "Terapis Bersertifikat", 
-      desc: "Standar PBI Nasional", 
+      desc: "Standar PBI Nasional & Pengalaman Sejak 2003", 
       icon: "🎓",
+      type: "gallery",
       images: [
         { src: imgSertifikat1, caption: "Sertifikat PBI Nasional 1" },
         { src: imgSertifikat2, caption: "Sertifikat PBI Nasional 2" }
@@ -30,6 +51,7 @@ const TrustSignals = () => {
       title: "Ruangan Terpisah & Fasilitas", 
       desc: "Privasi terjaga untuk Ikhwan & Akhwat dengan ruang tunggu yang nyaman", 
       icon: "🚪",
+      type: "gallery",
       images: [
         { src: imgRuangIkhwan, caption: "Fasilitas Ruang Perawatan Ikhwan" },
         { src: imgRuangAkhwat, caption: "Fasilitas Ruang Perawatan Akhwat" },
@@ -38,9 +60,10 @@ const TrustSignals = () => {
       ]
     },
     { 
-      title: "Alat Higienis", 
-      desc: "Standar alat steril sekali pakai", 
+      title: "Alat Higienis & Steril", 
+      desc: "Standar alat steril medis, jarum sekali pakai & pembuangan aman", 
       icon: "✨",
+      type: "hygiene",
       images: []
     },
   ];
@@ -96,9 +119,113 @@ const TrustSignals = () => {
               </button>
             </div>
             <div className="p-6 sm:p-8">
-              <p className="text-gray-600 mb-8 text-lg">{selectedItem.desc}</p>
+              <p className="text-gray-600 mb-6 text-base sm:text-lg">{selectedItem.desc}</p>
               
-              {selectedItem.images.length > 0 ? (
+              {selectedItem.type === "legal" && (
+                <div className="bg-emerald-50/70 border border-emerald-200/80 rounded-2xl p-6 sm:p-7 space-y-4">
+                  <div className="flex items-center gap-3 border-b border-emerald-200/60 pb-4">
+                    <div className="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center text-2xl shrink-0">
+                      ⚖️
+                    </div>
+                    <div>
+                      <h4 className="font-extrabold text-emerald-950 text-base sm:text-lg">
+                        Surat Terdaftar Pengobat Tradisional (STPT)
+                      </h4>
+                      <p className="text-xs text-emerald-700 font-medium">
+                        Pemerintah Provinsi DKI Jakarta &bull; Suku Dinas Kesehatan Jakarta Utara
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm pt-2">
+                    <div className="bg-white p-4 rounded-xl border border-emerald-100 shadow-2xs">
+                      <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-1">
+                        Nomor Registrasi Resmi
+                      </span>
+                      <span className="font-mono font-bold text-gray-900 text-sm break-all">
+                        001/B.41/31.72.03.1003/-1.779.3/2018
+                      </span>
+                    </div>
+
+                    <div className="bg-white p-4 rounded-xl border border-emerald-100 shadow-2xs">
+                      <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-1">
+                        Nama Institusi Praktik
+                      </span>
+                      <span className="font-bold text-gray-900 text-sm">
+                        Klinik Ruqyah Bekam Sehat (RBS)
+                      </span>
+                    </div>
+
+                    <div className="bg-white p-4 rounded-xl border border-emerald-100 shadow-2xs">
+                      <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-1">
+                        Bidang Pengobatan
+                      </span>
+                      <span className="font-medium text-gray-800 text-sm">
+                        Tibbun Nabawi (Ruqyah Syar'iyyah, Bekam, Gurah, & Herbal)
+                      </span>
+                    </div>
+
+                    <div className="bg-white p-4 rounded-xl border border-emerald-100 shadow-2xs">
+                      <span className="text-xs text-gray-400 font-bold uppercase tracking-wider block mb-1">
+                        Standar Kompetensi
+                      </span>
+                      <span className="font-medium text-gray-800 text-sm">
+                        Perkumpulan Bekam Indonesia (PBI)
+                      </span>
+                    </div>
+                  </div>
+
+                  <p className="text-xs text-emerald-800 leading-relaxed bg-white/70 p-3.5 rounded-xl border border-emerald-100">
+                    &bull; Keabsahan izin menjamin seluruh prosedur terapi mematuhi kaidah medis, sanitasi higienis, serta ketentuan hukum yang berlaku di Indonesia.
+                  </p>
+                </div>
+              )}
+
+              {selectedItem.type === "hygiene" && (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {[
+                      {
+                        title: "Jarum & Lancet Sekali Pakai",
+                        desc: "100% baru, steril, dan langsung dibuang ke safety box biohazard medis setelah satu kali pemakaian.",
+                        icon: "💉",
+                      },
+                      {
+                        title: "Kop Bekam Standar Medis",
+                        desc: "Kop bekam berkualitas medis yang disterilkan secara ketat dengan antiseptik dan cairan disinfektan medis.",
+                        icon: "🩺",
+                      },
+                      {
+                        title: "APD Terapis Bersih & Higienis",
+                        desc: "Terapis selalu menggunakan sarung tangan medis steril baru dan masker saat menangani setiap pasien.",
+                        icon: "🧤",
+                      },
+                      {
+                        title: "Minyak Alami Murni & Steril",
+                        desc: "Minyak zaitun murni dan herbal pilihan tanpa bahan kimia sintetis yang aman untuk pori-pori kulit.",
+                        icon: "🌿",
+                      },
+                    ].map((h, i) => (
+                      <div key={i} className="p-5 rounded-2xl bg-gray-50 border border-gray-100 flex items-start gap-4">
+                        <span className="text-3xl shrink-0 p-2 bg-white rounded-xl shadow-2xs">{h.icon}</span>
+                        <div>
+                          <h4 className="font-bold text-gray-900 text-sm">{h.title}</h4>
+                          <p className="text-xs text-gray-500 mt-1 leading-relaxed">{h.desc}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="bg-green-50 text-green-800 text-xs p-4 rounded-xl border border-green-100 flex items-center gap-2">
+                    <svg className="w-5 h-5 text-green-600 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                    <span>Klinik RBS memprioritaskan keamanan pasien untuk mencegah infeksi silang dan penularan penyakit.</span>
+                  </div>
+                </div>
+              )}
+
+              {selectedItem.images.length > 0 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {selectedItem.images.map((img, i) => (
                     <div key={i} className="flex flex-col gap-3">
@@ -122,10 +249,6 @@ const TrustSignals = () => {
                       <p className="text-center font-medium text-gray-700">{img.caption}</p>
                     </div>
                   ))}
-                </div>
-              ) : (
-                <div className="text-center py-12 bg-gray-50 rounded-2xl border border-dashed border-gray-200">
-                  <p className="text-gray-400">Data/Foto belum tersedia saat ini.</p>
                 </div>
               )}
             </div>

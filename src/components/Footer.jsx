@@ -17,7 +17,10 @@ const Footer = () => (
               <div className="text-lg font-extrabold text-white">Ruqyah Bekam Sehat</div>
             </div>
           </div>
-          <p className="text-gray-400 mt-3 max-w-sm md:ml-[60px]">Jl. Menteng Terusan No. 32 (Depan Bank BRI), Pasar Sinar Lagoa, Jakarta Utara 14270</p>
+          <div className="text-gray-400 mt-3 text-xs sm:text-sm space-y-1.5 md:ml-[60px] max-w-sm">
+            <p>&bull; <strong>Pusat:</strong> Jl. Menteng Terusan No. 32 (Depan BRI), Pasar Sinar Lagoa, Jakut</p>
+            <p>&bull; <strong>Cabang:</strong> Jl. Enim No. 86A, Sungai Bambu, Tanjung Priok, Jakut</p>
+          </div>
         </div>
         <div>
           <h3 className="text-lg font-medium text-white mb-4">Tautan Cepat</h3>

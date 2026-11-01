@@ -19,11 +19,26 @@ const ContactSection = () => {
             <div className="space-y-8">
               <div>
                 <h3 className="text-xl font-bold text-gray-950 mb-3 flex items-center gap-2">
-                  <span className="text-green-600">📍</span> Alamat Klinik
+                  <span className="text-green-600">📍</span> Lokasi Praktik Klinik
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Jl. Menteng Terusan No. 32 (Depan Bank BRI), Pasar Sinar Lagoa, Jakarta Utara 14270
-                </p>
+                <div className="space-y-3">
+                  <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-100">
+                    <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider block mb-1">
+                      Klinik Pusat (Pasar Sinar Lagoa)
+                    </span>
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      Jl. Menteng Terusan No. 32 (Depan Bank BRI), Pasar Sinar Lagoa, Jakarta Utara 14270
+                    </p>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-100">
+                    <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider block mb-1">
+                      Cabang Tanjung Priok
+                    </span>
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      Jl. Enim No. 86A Rt 08/03, Kel. Sungai Bambu, Kec. Tanjung Priok, Jakarta Utara 14330
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <div>

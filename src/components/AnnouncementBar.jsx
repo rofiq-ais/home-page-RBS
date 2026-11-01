@@ -1,18 +1,22 @@
 import { useState, useEffect } from "react";
 import { fetchAnnouncements } from "../lib/sanity";
 
+// Set to true jika ingin mengaktifkan kembali running text pengumuman
+const ENABLE_ANNOUNCEMENTS = false;
+
 const AnnouncementBar = () => {
   const [announcements, setAnnouncements] = useState([]);
 
   useEffect(() => {
+    if (!ENABLE_ANNOUNCEMENTS) return;
     fetchAnnouncements()
       .then(setAnnouncements)
       .catch(console.error);
   }, []);
 
-  // Hiding the running text temporarily per user request
-  return null;
-
+  if (!ENABLE_ANNOUNCEMENTS || announcements.length === 0) {
+    return null;
+  }
 
   const renderGroup = (prefix) =>
     announcements.map((item, idx) => (

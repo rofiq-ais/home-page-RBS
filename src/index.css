@@ -19,6 +19,6 @@ html {
   animation: marquee 15s linear infinite;
   will-change: transform;
 }
-body{
-  bgcolor: #f0f0f0;
+body {
+  background-color: #ffffff;
 }

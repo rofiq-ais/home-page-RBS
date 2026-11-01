@@ -6,6 +6,7 @@ const ScrollToHash = () => {
 
   useEffect(() => {
     if (hash) {
+      if (hash.startsWith('#whatsapp')) return;
       const id = hash.replace('#', '');
       const el = document.getElementById(id);
       if (el) {
