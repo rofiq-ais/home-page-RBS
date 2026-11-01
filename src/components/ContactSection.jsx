@@ -1,3 +1,5 @@
+import { CLINIC_NAME, CLINIC_ADDRESS, CLINIC_BENCHMARK, GOOGLE_MAPS_LINK } from "../config";
+
 const ContactSection = () => {
   const operations = [
     { days: "Senin - Kamis", hours: "09:00 - 20:00" },
@@ -19,24 +21,42 @@ const ContactSection = () => {
             <div className="space-y-8">
               <div>
                 <h3 className="text-xl font-bold text-gray-950 mb-3 flex items-center gap-2">
-                  <span className="text-green-600">📍</span> Lokasi Praktik Klinik
+                  <span className="text-green-600">📍</span> Alamat Klinik
                 </h3>
-                <div className="space-y-3">
-                  <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-100">
-                    <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider block mb-1">
-                      Klinik Pusat (Pasar Sinar Lagoa)
+                <div className="p-4 sm:p-5 rounded-2xl bg-gray-50 border border-gray-100 space-y-2.5">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold text-emerald-800 bg-emerald-100/90 px-2.5 py-0.5 rounded-full uppercase tracking-wider">
+                      Alamat Resmi
                     </span>
-                    <p className="text-gray-700 text-sm leading-relaxed">
-                      Jl. Menteng Terusan No. 32 (Depan Bank BRI), Pasar Sinar Lagoa, Jakarta Utara 14270
+                    <span className="text-xs text-gray-500 font-medium">Patokan: {CLINIC_BENCHMARK}</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-950 text-base">
+                      {CLINIC_NAME}
+                    </h4>
+                    <p className="text-gray-700 text-sm mt-1 leading-relaxed">
+                      {CLINIC_ADDRESS}
                     </p>
                   </div>
-                  <div className="p-3.5 rounded-xl bg-gray-50 border border-gray-100">
-                    <span className="text-xs font-bold text-emerald-800 uppercase tracking-wider block mb-1">
-                      Cabang Tanjung Priok
-                    </span>
-                    <p className="text-gray-700 text-sm leading-relaxed">
-                      Jl. Enim No. 86A Rt 08/03, Kel. Sungai Bambu, Kec. Tanjung Priok, Jakarta Utara 14330
-                    </p>
+                  <div className="pt-2.5 border-t border-gray-200/60 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-gray-600">
+                    <span className="font-semibold text-gray-800">Telepon & WhatsApp:</span>
+                    <a
+                      href="https://wa.me/6285782819183"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-green-700 font-bold hover:underline"
+                    >
+                      0857-8281-9183
+                    </a>
+                    <span className="text-gray-300">&bull;</span>
+                    <a
+                      href="https://wa.me/6281213840501"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="text-green-700 font-bold hover:underline"
+                    >
+                      0812-1384-0501
+                    </a>
                   </div>
                 </div>
               </div>
@@ -57,16 +77,16 @@ const ContactSection = () => {
             </div>
 
             <div className="mt-8 p-6 bg-green-50/60 rounded-2xl border border-green-100 flex items-center gap-4">
-              <span className="text-3xl">📞</span>
+              <span className="text-3xl">🧭</span>
               <div>
-                <h4 className="font-bold text-gray-900 text-sm">Butuh Bantuan Navigasi?</h4>
+                <h4 className="font-bold text-gray-900 text-sm">Petunjuk Arah & Google Maps</h4>
                 <a
-                  href="https://maps.google.com/?q=Jl.+Menteng+Terusan+No.+32+Pasar+Sinar+Lagoa+Jakarta+Utara"
+                  href={GOOGLE_MAPS_LINK}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-xs text-green-700 font-bold hover:underline"
+                  className="inline-flex items-center gap-1.5 mt-1 text-xs text-green-700 font-bold hover:underline"
                 >
-                  Buka Petunjuk Arah Google Maps &rarr;
+                  <span>Buka di Google Maps Langsung &rarr;</span>
                 </a>
               </div>
             </div>

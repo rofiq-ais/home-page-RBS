@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import FloatingWhatsApp from "../components/FloatingWhatsApp";
 import { SkeletonCard } from "../components/ui/Skeleton";
 import ImageModal from "../components/ImageModal";
+import PromoBundleSpotlight from "../components/PromoBundleSpotlight";
 import imgDaftarTarif from "../assets/daftar-tarif-rbs.jpg";
 
 const Layanan = () => {
@@ -14,6 +15,7 @@ const Layanan = () => {
   const [loading, setLoading] = useState(true);
   const [zoomedImage, setZoomedImage] = useState(null);
   const [expandedBenefits, setExpandedBenefits] = useState({});
+  const [activeCategory, setActiveCategory] = useState("all");
 
   const toggleBenefits = (id) => {
     setExpandedBenefits((prev) => ({ ...prev, [id]: !prev[id] }));
@@ -25,6 +27,21 @@ const Layanan = () => {
       .catch(console.error)
       .finally(() => setLoading(false));
   }, []);
+
+  const isHomeCare = (srv) =>
+    srv.slug?.current?.includes("kunjungan") ||
+    srv.name?.toLowerCase().includes("kunjungan") ||
+    srv.badge?.toLowerCase().includes("rumah") ||
+    srv.badge?.toLowerCase().includes("home");
+
+  const clinicCount = services.filter((s) => !isHomeCare(s)).length;
+  const homeCareCount = services.filter((s) => isHomeCare(s)).length;
+
+  const filteredServices = services.filter((srv) => {
+    if (activeCategory === "homecare") return isHomeCare(srv);
+    if (activeCategory === "klinik") return !isHomeCare(srv);
+    return true;
+  });
 
   return (
     <div className="font-sans antialiased text-gray-900 bg-white min-h-screen relative">
@@ -44,6 +61,57 @@ const Layanan = () => {
 
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Category Filter Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10">
+            <button
+              type="button"
+              onClick={() => setActiveCategory("all")}
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+                activeCategory === "all"
+                  ? "bg-green-600 text-white shadow-md shadow-green-600/20"
+                  : "bg-white text-gray-600 hover:text-green-700 hover:bg-green-50 border border-gray-200"
+              }`}
+            >
+              Semua Layanan ({services.length})
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveCategory("klinik")}
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                activeCategory === "klinik"
+                  ? "bg-green-600 text-white shadow-md shadow-green-600/20"
+                  : "bg-white text-gray-600 hover:text-green-700 hover:bg-green-50 border border-gray-200"
+              }`}
+            >
+              <span>🏥</span> Layanan di Klinik ({clinicCount})
+            </button>
+            <button
+              type="button"
+              onClick={() => setActiveCategory("homecare")}
+              className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                activeCategory === "homecare"
+                  ? "bg-emerald-700 text-white shadow-md shadow-emerald-700/20"
+                  : "bg-white text-emerald-800 hover:text-emerald-700 hover:bg-emerald-50 border border-emerald-200"
+              }`}
+            >
+              <span>🚗</span> Home Care / Panggilan ({homeCareCount})
+            </button>
+          </div>
+
+          {activeCategory === "homecare" && (
+            <div className="mb-8 p-4 sm:p-5 rounded-2xl bg-emerald-50/90 border border-emerald-200 flex items-start gap-3.5 text-left text-xs sm:text-sm text-emerald-900 animate-in fade-in duration-200">
+              <span className="text-2xl mt-0.5 shrink-0">🏠</span>
+              <div>
+                <h4 className="font-bold text-emerald-950 text-sm sm:text-base">
+                  Layanan Terapi Kunjungan Langsung ke Rumah Anda
+                </h4>
+                <p className="text-emerald-800 mt-1 leading-relaxed">
+                  Terapis profesional berseragam resmi Klinik RBS hadir langsung membawa perlengkapan steril, ranjang terapi portabel higienis, serta peralatan steril sekali pakai. Dapatkan kenyamanan terapi sunnah penuh privasi tanpa repot keluar rumah.
+                </p>
+              </div>
+            </div>
+          )}
+
           {loading ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[1, 2, 3, 4, 5, 6].map((i) => (
@@ -52,7 +120,7 @@ const Layanan = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
-              {services.map((srv) => (
+              {filteredServices.map((srv) => (
                 <article
                   key={srv._id}
                   className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-xl hover:border-green-200 transition-all duration-300 group h-full"
@@ -89,8 +157,14 @@ const Layanan = () => {
                     </div>
 
                     {srv.badge && (
-                      <span className="absolute top-2.5 left-2.5 bg-amber-400 text-gray-950 font-black text-[10px] px-2.5 py-0.5 rounded-full shadow-md z-10 uppercase tracking-wider">
-                        ★ {srv.badge}
+                      <span
+                        className={`absolute top-2.5 left-2.5 font-black text-[10px] px-2.5 py-0.5 rounded-full shadow-md z-10 uppercase tracking-wider flex items-center gap-1 ${
+                          srv.badge.toLowerCase().includes("rumah") || srv.badge.toLowerCase().includes("home")
+                            ? "bg-emerald-600 text-white"
+                            : "bg-amber-400 text-gray-950"
+                        }`}
+                      >
+                        {srv.badge.toLowerCase().includes("rumah") || srv.badge.toLowerCase().includes("home") ? "🚗" : "★"} {srv.badge}
                       </span>
                     )}
                     {srv.duration && (
@@ -188,6 +262,9 @@ const Layanan = () => {
           )}
         </div>
       </section>
+
+      {/* Featured Promo Bundle */}
+      <PromoBundleSpotlight />
 
       {/* Official Pricelist Poster Spotlight */}
       <section id="daftar-tarif" className="py-16 sm:py-20 bg-white border-t border-b border-gray-100">

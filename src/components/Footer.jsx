@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logoRbs from "../assets/logo-rbs.jpeg";
+import { CLINIC_ADDRESS, CLINIC_BENCHMARK, GOOGLE_MAPS_LINK } from "../config";
 
 const Footer = () => (
   <footer className="bg-gray-800 py-12">
@@ -17,9 +18,29 @@ const Footer = () => (
               <div className="text-lg font-extrabold text-white">Ruqyah Bekam Sehat</div>
             </div>
           </div>
-          <div className="text-gray-400 mt-3 text-xs sm:text-sm space-y-1.5 md:ml-[60px] max-w-sm">
-            <p>&bull; <strong>Pusat:</strong> Jl. Menteng Terusan No. 32 (Depan BRI), Pasar Sinar Lagoa, Jakut</p>
-            <p>&bull; <strong>Cabang:</strong> Jl. Enim No. 86A, Sungai Bambu, Tanjung Priok, Jakut</p>
+          <div className="text-gray-400 mt-3 text-xs sm:text-sm space-y-1 md:ml-[60px] max-w-sm">
+            <p className="text-gray-300 font-medium">
+              {CLINIC_ADDRESS}
+            </p>
+            <p className="text-xs text-gray-400">Patokan: {CLINIC_BENCHMARK}</p>
+            <div className="pt-1 flex flex-wrap items-center justify-center md:justify-start gap-x-2.5 gap-y-1 text-xs">
+              <a
+                href={GOOGLE_MAPS_LINK}
+                target="_blank"
+                rel="noreferrer"
+                className="text-emerald-400 hover:text-emerald-300 font-semibold inline-flex items-center gap-1"
+              >
+                <span>📍 Buka Google Maps</span>
+              </a>
+              <span className="text-gray-500">&bull;</span>
+              <a href="https://wa.me/6285782819183" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white">
+                0857-8281-9183
+              </a>
+              <span className="text-gray-500">/</span>
+              <a href="https://wa.me/6281213840501" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white">
+                0812-1384-0501
+              </a>
+            </div>
           </div>
         </div>
         <div>

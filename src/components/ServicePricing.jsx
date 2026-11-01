@@ -72,8 +72,14 @@ const ServicePricing = () => {
                   </div>
 
                   {srv.badge && (
-                    <span className="absolute top-2.5 left-2.5 bg-amber-400 text-gray-950 font-black text-[10px] px-2.5 py-0.5 rounded-full shadow-md z-10 uppercase tracking-wider">
-                      ★ {srv.badge}
+                    <span
+                      className={`absolute top-2.5 left-2.5 font-black text-[10px] px-2.5 py-0.5 rounded-full shadow-md z-10 uppercase tracking-wider flex items-center gap-1 ${
+                        srv.badge.toLowerCase().includes("rumah") || srv.badge.toLowerCase().includes("home")
+                          ? "bg-emerald-600 text-white"
+                          : "bg-amber-400 text-gray-950"
+                      }`}
+                    >
+                      {srv.badge.toLowerCase().includes("rumah") || srv.badge.toLowerCase().includes("home") ? "🚗" : "★"} {srv.badge}
                     </span>
                   )}
                   {srv.duration && (
@@ -123,7 +129,34 @@ const ServicePricing = () => {
             ))}
           </div>
         )}
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+
+        {/* Highlight Callout: Layanan Kunjungan / Home Care */}
+        <div className="mt-10 bg-gradient-to-r from-emerald-900 via-green-950 to-teal-900 rounded-3xl p-5 sm:p-7 text-white shadow-lg border border-emerald-500/20 flex flex-col md:flex-row items-center justify-between gap-5">
+          <div className="flex items-center gap-4 text-center md:text-left">
+            <div className="w-12 h-12 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center text-2xl shrink-0 border border-white/20">
+              🚗
+            </div>
+            <div>
+              <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-amber-300 bg-amber-400/20 px-2.5 py-0.5 rounded-full mb-1">
+                <span>★</span> Home Service / Panggilan
+              </div>
+              <h3 className="text-base sm:text-lg font-bold text-white">
+                Butuh Terapi Nyaman Langsung di Rumah?
+              </h3>
+              <p className="text-xs sm:text-sm text-emerald-100/90 mt-0.5 max-w-xl">
+                Tersedia <strong>Layanan Kunjungan (Home Care)</strong> untuk <em>Bekam Medis</em> & <em>Ruqyah Syar'iyyah</em>. Terapis kami hadir langsung lengkap membawa perlengkapan steril & ranjang terapi portabel.
+              </p>
+            </div>
+          </div>
+          <Link
+            to="/layanan"
+            className="px-6 py-2.5 rounded-full bg-amber-400 hover:bg-amber-300 text-gray-950 font-black text-xs sm:text-sm transition-all shadow-md shrink-0 whitespace-nowrap transform hover:scale-[1.02]"
+          >
+            Lihat Layanan Kunjungan &rarr;
+          </Link>
+        </div>
+
+        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             to="/layanan"
             className="inline-flex items-center px-8 py-3 bg-white border-2 border-green-600 text-green-600 font-bold rounded-full hover:bg-green-600 hover:text-white transition-all shadow-sm"

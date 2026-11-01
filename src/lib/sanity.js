@@ -3,7 +3,6 @@ import imageUrlBuilder from "@sanity/image-url";
 import { articles as localArticles } from "../data/articles";
 import { products as defaultProducts } from "../data/products";
 import { services as defaultServices } from "../data/services";
-import imgRuqyah from "../assets/ruqyah-img.jpeg";
 
 const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || "51gxevin";
 const dataset = import.meta.env.VITE_SANITY_DATASET || "production";
@@ -124,22 +123,7 @@ export async function fetchServices() {
   }`;
   try {
     const res = await client.fetch(query);
-    if (res && res.length > 0) {
-      return res.map((srv) => {
-        if (
-          srv.slug?.current === "ruqyah-syari-ah" ||
-          srv.name?.toLowerCase().includes("ruqyah")
-        ) {
-          const isOldRuqyahSanityImg = srv.image?.asset?._ref?.includes("dc86d07556539fbc108e74c9227b2561f169dd13");
-          return {
-            ...srv,
-            image: (!srv.image?.asset || isOldRuqyahSanityImg) ? imgRuqyah : srv.image,
-            alt: srv.alt || "Terapi Ruqyah Syari'ah di Klinik RBS",
-          };
-        }
-        return srv;
-      });
-    }
+    if (res && res.length > 0) return res;
     return defaultServices;
   } catch (err) {
     console.warn("Gagal memuat layanan dari Sanity (CORS/jaringan), menggunakan data lokal:", err);
@@ -163,20 +147,7 @@ export async function fetchServiceBySlug(slug) {
   }`;
   try {
     const res = await client.fetch(query, { slug });
-    if (res) {
-      if (
-        res.slug?.current === "ruqyah-syari-ah" ||
-        res.name?.toLowerCase().includes("ruqyah")
-      ) {
-        const isOldRuqyahSanityImg = res.image?.asset?._ref?.includes("dc86d07556539fbc108e74c9227b2561f169dd13");
-        return {
-          ...res,
-          image: (!res.image?.asset || isOldRuqyahSanityImg) ? imgRuqyah : res.image,
-          alt: res.alt || "Terapi Ruqyah Syari'ah di Klinik RBS",
-        };
-      }
-      return res;
-    }
+    if (res) return res;
     return defaultServices.find((s) => (s.slug?.current || s.slug) === slug) || null;
   } catch (err) {
     console.warn("Gagal memuat detail layanan dari Sanity:", err);
@@ -199,38 +170,7 @@ export async function fetchProducts() {
   }`;
   try {
     const res = await client.fetch(query);
-    if (res && res.length > 0) {
-      // Prioritize Sanity input while providing local images and default products as fallback
-      const merged = defaultProducts.map((def) => {
-        const found = res.find(
-          (p) =>
-            p.slug?.current === def.slug?.current ||
-            p.name?.toLowerCase().trim() === def.name.toLowerCase().trim()
-        );
-        if (found) {
-          // Gunakan deskripsi dari Sanity jika valid dan cukup lengkap, jika tidak gunakan default lokal
-          const hasRealDesc = found.desc && found.desc.trim().length > 15;
-          const hasRealShortDesc = found.shortDesc && found.shortDesc.trim().length > 10;
-          return {
-            ...def,
-            ...found,
-            desc: hasRealDesc ? found.desc : def.desc,
-            shortDesc: hasRealShortDesc ? found.shortDesc : def.shortDesc,
-            image: found.image?.asset ? found.image : def.image,
-          };
-        }
-        return def;
-      });
-      const extras = res.filter(
-        (p) =>
-          !defaultProducts.some(
-            (def) =>
-              def.slug?.current === p.slug?.current ||
-              def.name?.toLowerCase().trim() === p.name?.toLowerCase().trim()
-          )
-      );
-      return [...merged, ...extras];
-    }
+    if (res && res.length > 0) return res;
     return defaultProducts;
   } catch (err) {
     console.warn("Gagal memuat produk dari Sanity (CORS/jaringan), menggunakan data lokal:", err);
@@ -253,19 +193,7 @@ export async function fetchProductBySlug(slug) {
   }`;
   try {
     const res = await client.fetch(query, { slug });
-    if (res) {
-      const matchDef = defaultProducts.find(
-        (p) => (p.slug?.current || p.slug) === slug
-      );
-      if (matchDef) {
-        return {
-          ...matchDef,
-          ...res,
-          image: matchDef.image,
-        };
-      }
-      return res;
-    }
+    if (res) return res;
     return defaultProducts.find((p) => (p.slug?.current || p.slug) === slug) || null;
   } catch (err) {
     console.warn("Gagal memuat detail produk dari Sanity:", err);

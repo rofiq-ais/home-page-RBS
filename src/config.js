@@ -1,3 +1,8 @@
+export const CLINIC_NAME = "Klinik Syariah Ruqyah Bekam Sehat";
+export const CLINIC_ADDRESS = "Jl. Menteng Terusan No.32, RT.2/RW.8, Lagoa, Kec. Koja, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14270";
+export const CLINIC_BENCHMARK = "Depan Bank BRI / Pasar Sinar Lagoa";
+export const GOOGLE_MAPS_LINK = "https://maps.app.goo.gl/fXjuwoRpySqZrnNZA";
+
 export const WHATSAPP_ADMINS = [
   {
     id: "admin-1",
@@ -16,3 +21,4 @@ export const WHATSAPP_ADMINS = [
 export const WHATSAPP_NUMBER = WHATSAPP_ADMINS[0].phone;
 
 export const WHATSAPP_LINK = "#whatsapp";
+

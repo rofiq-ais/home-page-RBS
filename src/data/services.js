@@ -1,5 +1,7 @@
 import imgRuqyah from "../assets/ruqyah-img.jpeg";
 import imgPosterBundle from "../assets/paket-bundling-rbs.jpg";
+import imgBekamKunjungan from "../assets/bekam-kunjungan-img.jpg";
+import imgRuqyahKunjungan from "../assets/ruqyah-kunjungan-img.jpg";
 
 export const services = [
   {
@@ -135,5 +137,45 @@ export const services = [
     image: "https://cdn.sanity.io/images/51gxevin/production/8f8e2fb0400a06f982db83ada0e6259206515c7e-393x280.webp",
     alt: "Ear Candle Terapi Telinga di Klinik RBS",
     order: 6
+  },
+  {
+    _id: "srv-bekam-kunjungan",
+    name: "Terapi Bekam Kunjungan (Home Care)",
+    slug: { current: "terapi-bekam-kunjungan" },
+    price: "Mulai Rp 200.000",
+    duration: "±60 menit",
+    badge: "Bisa Dipanggil ke Rumah",
+    shortDesc: "Layanan bekam profesional, steril, dan syar'i langsung di rumah Anda tanpa perlu keluar rumah.",
+    desc: "Layanan Terapi Bekam Kunjungan (Home Care / Panggilan) dari Klinik RBS memberikan solusi praktis bagi Anda dan keluarga untuk berikhtiar sehat sesuai sunnah Nabi ﷺ dengan kenyamanan maksimal di rumah sendiri. Terapis bersertifikat kami datang langsung membawa perlengkapan steril, ranjang portabel higienis, dan standar alat sekali pakai.",
+    benefits: [
+      "Praktis Tanpa Keluar Rumah: Tidak perlu repot antre atau menembus kemacetan jalan",
+      "Kenyamanan & Privasi Penuh: Menjalani terapi di lingkungan rumah sendiri yang tenang",
+      "Terapis Resmi Bersertifikat: Ditangani langsung oleh terapis ahli standar PBI Nasional",
+      "Peralatan Lengkap & Steril: Membawa ranjang terapi portabel dan jarum/kop sekali pakai",
+      "Detoksifikasi Tubuh Maksimal: Membuang darah kotor, meredakan migrain, nyeri, & kelelahan"
+    ],
+    image: imgBekamKunjungan,
+    alt: "Layanan Terapi Bekam Kunjungan Home Care Panggilan ke Rumah Klinik RBS",
+    order: 7
+  },
+  {
+    _id: "srv-ruqyah-kunjungan",
+    name: "Terapi Ruqyah Kunjungan (Home Care)",
+    slug: { current: "terapi-ruqyah-kunjungan" },
+    price: "Mulai Rp 250.000",
+    duration: "±60 - 90 menit",
+    badge: "Bisa Dipanggil ke Rumah",
+    shortDesc: "Layanan ruqyah syar'iyyah yang menenangkan, aman, dan syar'iat langsung di rumah Anda.",
+    desc: "Layanan Terapi Ruqyah Kunjungan (Home Care / Panggilan) dari Klinik RBS melayani pembacaan ayat-ayat suci Al-Qur'an dan doa perlindungan yang sahih sesuai sunnah Nabi Muhammad ﷺ langsung di kediaman Anda. Sangat ideal untuk ketenangan batin, perlindungan keluarga, pembersihan rumah dari gangguan non-medis, maupun ikhtiar kesembuhan bagi pasien yang memiliki keterbatasan mobilitas.",
+    benefits: [
+      "Kenyamanan & Privasi Rumah: Terapi berlangsung tenang tanpa harus repot bepergian ke klinik",
+      "Perlindungan Spiritual Syar'i: Ikhtiar memohon kesembuhan dari gangguan gaib, 'ain, sihir, & kecemasan",
+      "Ruqyah Rumah & Keluarga: Membawa ketentraman dan memurnikan suasana kediaman dengan kalamullah",
+      "Praktisi Resmi & Amanah: Ditangani langsung oleh terapis ahli syar'i bebas dari kesyirikan",
+      "Solusi Pasien Khusus: Sangat memudahkan pasien lansia, pasca stroke, atau pasien sakit berat"
+    ],
+    image: imgRuqyahKunjungan,
+    alt: "Layanan Terapi Ruqyah Kunjungan Home Care Panggilan ke Rumah Klinik RBS",
+    order: 8
   }
 ];
